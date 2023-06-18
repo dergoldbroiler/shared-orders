@@ -2,6 +2,7 @@ import ContentEditable from 'react-contenteditable';
 import { useState } from 'react';
 import sanitizeHtml from 'sanitize-html';
 import React from 'react';
+import { Td } from './Td';
 export const Table = ({ data, handleData }) => {
 
 
@@ -12,7 +13,7 @@ export const Table = ({ data, handleData }) => {
 			allowedAttributes: { a: ["href"] }
 		};
 
-		handleData(sanitizeHtml(e.currentTarget.innerHTML, sanitizeConf))
+		handleData(e, sanitizeHtml(e.currentTarget.innerHTML, sanitizeConf))
 	};
     return (   
         <table>
@@ -23,22 +24,13 @@ export const Table = ({ data, handleData }) => {
                 </tr>
             </thead>
             <tbody>
-                {data.map((order) => (
+                {data.map((order, index) => (
+                   
                     <tr key={order.id}>
-                        <td>
-                            <ContentEditable
-			                    onChange={onContentChange}
-			                    onBlur={onContentChange}
-			                    html={order.id.toString()} />  
-                        </td>
-                        <td>
-                        <ContentEditable
-			                    onChange={onContentChange}
-			                    onBlur={onContentChange}
-			                    html={order.customer} />
-                        </td>
+                        <Td singledata={order} index={index}/>
                     </tr>
                 ))}
+
             </tbody>
         </table>
     );     
