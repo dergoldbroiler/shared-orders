@@ -3,7 +3,7 @@ import ContentEditable from 'react-contenteditable';
 import { useEffect, useState } from 'react';
 import sanitizeHtml from 'sanitize-html';
 
-export const Datarow = ({ datarow, index, handleData }) => {
+export const Datarow = ({ datarow, handleData, dataOnBlur }) => {
 
     const [data, setData] = useState(datarow);
 
@@ -12,7 +12,7 @@ export const Datarow = ({ datarow, index, handleData }) => {
 			allowedTags: ["b", "i", "a", "p"],
 			allowedAttributes: { a: ["href"] }
 		};
-        console.log(e.target.value);
+
         let new_value = sanitizeHtml(e.target.value, sanitizeConf);
         handleData(key,id,new_value);
     }

@@ -1,5 +1,5 @@
 import { Datarow } from "./Datarow"
-export const DatarowContainer = ({ datarow, index, handleData }) => {
+export const DatarowContainer = ({ datarow, handleData, dataOnBlur }) => {
 
 
     return(
@@ -12,7 +12,7 @@ export const DatarowContainer = ({ datarow, index, handleData }) => {
                 </div>
                 <div className="modal-body text-black">
 
-                <Datarow handleData={handleData} datarow={datarow} index={index} />  
+                <Datarow handleData={handleData} datarow={datarow} dataOnBlur={dataOnBlur} />  
 
                 </div>
                 <div className="modal-footer">
